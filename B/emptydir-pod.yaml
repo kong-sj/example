@@ -6,7 +6,7 @@ spec:
   containers:
   - name: content-creator
     image: alicek106/alpine-wget:latest
-    #args: ["tail", "-f", "/dev/null"]
+    args: ["tail", "-f", "/dev/null"]
     volumeMounts:
     - name: my-emptydir-volume
       mountPath: /data                      # 1. 이 컨테이너가 /data 에 파일을 생성하면

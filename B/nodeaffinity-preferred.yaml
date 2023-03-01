@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeaffinity-deployment
+  labels:
+    app: sjhong
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sjhong
+  template:
+    metadata:
+      labels:
+        app: sjhong
+    spec:
+      containers:
+      - name: sjhong
+        image: sjhong1994/sample-web
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 80
+            preference:
+              matchExpressions:
+              - key: kr
+                operator: In
+                values:
+                - kr-1
+                - kr-2
+          - weight: 56
+            preference:
+              matchExpressions:
+              - key: kr
+                operator: In
+                values:
+                - kr-3

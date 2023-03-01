@@ -14,5 +14,4 @@ spec:
   - name : nfs-volume2
     nfs:                            # NFS 서버의 볼륨을 포드의 컨테이너에 마운트합니다.
       path: /
-      server: 198.19.198.127
-  nodeName: sjh-nodepool-w-2df4
+      server: 198.19.137.183

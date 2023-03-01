@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeaffinity-deployment
+  labels:
+    app: sjhong
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sjhong
+  template:
+    metadata:
+      labels:
+        app: sjhong
+    spec:
+      containers:
+      - name: sjhong
+        image: sjhong1994/sample-web
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:  #key:value가 반드시 일치하는 노드에 할당
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: kr
+                  operator: In
+                  values:
+                  - kr-1
+                  - kr-2

@@ -1,40 +1,20 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: my-nas-pvc
-  labels:
-    pv: nas
-spec:
-  storageClassName: ""
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 5Gi
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pv-deploy
+  name: mario
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: pv-deploy
+      app: mario
   template:
     metadata:
       labels:
-        app: pv-deploy
+        app: mario
     spec:
       containers:
         - name: mario
-          image: sjhong1994/testweb
+          image: pengbai/docker-supermario
           ports:
-            - containerPort: 80
-          volumeMounts:
-            - name: nas-volume
-              mountPath: /data
-      volumes:
-        - name: nas-volume
-          persistentVolumeClaim:
-            claimName: my-nas-pvc
+            - containerPort: 8080
+

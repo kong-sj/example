@@ -15,4 +15,4 @@ spec:
         topologyKey: kr
   containers:
   - name: nginx
-    image: nginx:latest
+    image: sjhong1994/chk_pod_info

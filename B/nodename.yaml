@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
   - name: nginx
-    image: nginx
+    image: sjhong1994/chk_pod_info
   nodeName: ${NODE_NAME}
 

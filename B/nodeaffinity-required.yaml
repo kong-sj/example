@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: sjhong
-        image: sjhong1994/sample-web
+        image: sjhong1994/chk_pod_info
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:  #key:value가 반드시 일치하는 노드에 할당

@@ -2,8 +2,8 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: pv0003
-  labels:
-    pv: nas
+  #labels:
+  # pv: nas
 spec:
   capacity:
     storage: 5Gi

@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-nas-pvc
+  #  labels:
+  #  pv: nas
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pv-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pv-deploy
+  template:
+    metadata:
+      labels:
+        app: pv-deploy
+    spec:
+      containers:
+        - name: mario
+          image: sjhong1994/chk_pod_info
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: nas-volume
+              mountPath: /data
+      volumes:
+        - name: nas-volume
+          persistentVolumeClaim:
+            claimName: my-nas-pvc

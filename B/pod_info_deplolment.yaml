@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-info
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pod-info
+  template:
+    metadata:
+      labels:
+        app: pod-info
+    spec:
+      containers:
+        - name: pod-info
+          image: sjhong1994/chk_pod_info
+          ports:
+            - containerPort: 8080
+

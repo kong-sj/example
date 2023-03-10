@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mkarket-deployment
+  labels:
+    app: market
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: market
+  template:
+    metadata:
+      labels:
+        app: market
+    spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: mylabel/database
+                operator: In
+                values:
+                - mysql
+            topologyKey: region
+      containers:
+      - name: market
+        image: sjhong1994/chk_pod_info    

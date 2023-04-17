@@ -26,4 +26,4 @@ spec:
                   operator: In
                   values:
                   - kr-1
-                  - kr-2
+                  - kr-3
